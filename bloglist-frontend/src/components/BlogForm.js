@@ -3,11 +3,11 @@ import {useDispatch, useSelector} from 'react-redux'
 import {setErrorMessage} from '../reducers/errorMessageReducer'
 import {setTitle, setAuthor, setUrl} from '../reducers/blogFormReducer'
 import {createBlog} from '../reducers/blogsReducer'
-
 import {setError} from '../reducers/errorReducer'
-
+import {useHistory} from 'react-router-dom'
 const BlogForm = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const {title, author, url} = useSelector(state => state.blogFormReducer)
 
   const addBlog = () => {
@@ -16,7 +16,7 @@ const BlogForm = () => {
     dispatch(createBlog(newBlog))
     dispatch(setError(false))
     dispatch(setErrorMessage(`a new blog ${title} by ${author} added`))
-
+    history.push('/blogs')
     setTimeout(() => {
     dispatch(setErrorMessage(null))
    }, 5000)

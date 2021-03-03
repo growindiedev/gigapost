@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Blog from './Blog'
 import {Link} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import {getBlogs} from '../reducers/blogsReducer'
+import Bloglist from './Bloglist'
 
 
 const ShowBlogs = () => {
 
     const dispatch = useDispatch()
-    dispatch(getBlogs())
+    useEffect(() => {
+      dispatch(getBlogs())
+    }, [dispatch])
+    
     const blogs = useSelector(state => state.blogsReducer)
     const user = useSelector(state => state.loginReducer)
     console.log('jerry', user)

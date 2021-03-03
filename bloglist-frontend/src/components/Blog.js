@@ -36,7 +36,7 @@ const addComment = async (event) => {
 
 useEffect(() => {
   dispatch(getBlogs())
-}, [addComment])
+}, [addComment, dispatch])
 
 const updateBlog = (event) => {
   event.preventDefault();

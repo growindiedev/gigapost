@@ -1,41 +1,42 @@
 import loginService from '../services/login'
-import blogService from '../services/blogs'
 
+const loggedInUserJSON = JSON.parse(
+  window.localStorage.getItem('loggedInBloglistUser'),
+)
 
-const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
+const initialState = loggedInUserJSON ? loggedInUserJSON : null
 
-const initialState = loggedUserJSON ? loggedUserJSON : null
+const loginReducer = (state = initialState, action) => {
+  console.log('state now: ', state)
+  console.log('action', action)
 
-export const setLogin = (credentials) => {
-    return async (dispatch) => {
-        const user = await loginService.login(credentials)
-        await blogService.setToken(user.token)
-        window.localStorage.setItem(
-            'loggedUser', JSON.stringify(user)
-          )
-        dispatch({
-            type: "LOGIN",
-            payload: user
-        })
+  switch (action.type) {
+    case 'LOGIN':
+      return action.data
+    case 'LOGOUT': {
+      return null
     }
+    default:
+      return state
+  }
 }
 
-export const setLogout = () => {
-    window.localStorage.removeItem('loggedUser')
-    return {
-        type: "LOGOUT"
-    }
+export const login = (username, password) => {
+  return async (dispatch) => {
+    const user = await loginService.login({ username, password })
+    console.log({ user })
+    console.log('called')
+    dispatch({
+      type: 'LOGIN',
+      data: user,
+    })
+  }
 }
 
-const reducer = (state = initialState, action) => {
-    switch(action.type) {
-        case "LOGIN":
-            return action.payload
-        case "LOGOUT":
-            return null
-        default: 
-            return state
-    }
+export const logout = () => {
+  return {
+    type: 'LOGOUT',
+  }
 }
 
-export default reducer
+export default loginReducer

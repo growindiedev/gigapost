@@ -28,16 +28,12 @@ const App = () => {
   const dispatch = useDispatch()
   const {username, password} = useSelector(state => state.loginFormReducer)
 
-
   useEffect(() => {
-    const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
-    if (loggedUserJSON) {
-      blogService.setToken(loggedUserJSON.token)
-      
-    }
-  }, [])
+    dispatch(getUsers())
+    dispatch(getBlogs())
+  }, [dispatch])
 
-  
+  let loggedUser = useSelector(state => state.loginReducer)
  
   
 const handleLogin = async (event) => {
@@ -57,7 +53,26 @@ const handleLogin = async (event) => {
     }, 5000)
   }
 
-  let loggedUser = useSelector(state => state.loginReducer)
+    // Check if user in localStorage
+    useEffect(() => {
+      const loggedInUserJSON = JSON.parse(
+        window.localStorage.getItem('loggedUser'),
+      )
+      if (loggedInUserJSON) {
+        const loggedUser = loggedInUserJSON
+        blogService.setToken(loggedUser?.token)
+      }
+    }, [])
+
+
+  useEffect(() => {
+    const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
+    if (loggedUserJSON) {
+      blogService.setToken(loggedUserJSON.token)
+      
+    }
+  }, [loggedUser])
+
 
 
   if(loggedUser === null ){

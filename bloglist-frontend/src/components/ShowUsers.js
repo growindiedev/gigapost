@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -7,7 +7,9 @@ import {getUsers} from '../reducers/usersReducer'
 
 function ShowUsers() {
     const dispatch = useDispatch()
-    dispatch(getUsers())
+    useEffect(() => {
+        dispatch(getUsers())
+    }, [])
 
     const users = useSelector(state => state.usersReducer)
     const people = users.map((user, i) => <div key={i}>
