@@ -1,8 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import React from 'react'
-import users from '../services/users'
 
 const UsersPage = () => {
     const users = useSelector(state => state.users)
@@ -20,11 +18,11 @@ const UsersPage = () => {
                         <span >{user?.blogs?.length}</span>
                     </Link>
                     </li>
-                    ))}
+                ))}
                 </ul>
             </div>
         </>
     )
 }
 
-export default UserPage
+export default UsersPage
