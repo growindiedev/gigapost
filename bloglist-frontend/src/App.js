@@ -1,79 +1,42 @@
 import React, { useEffect } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {Switch, Route} from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 import blogService from './services/blogs'
-
-import BlogForm from './components/BlogForm'
-import LoginForm from './components/LoginForm'
-import ShowBlogs from './components/ShowBlogs'
-import Notification from './components/Notification'
-import Togglable from './components/Togglable'
-import ShowUsers from './components/ShowUsers'
-import Bloglist from './components/Bloglist'
-import Blog from './components/Blog'
+import { initializeBlogs } from './reducers/blogReducer'
+import LoginPage from './components/LoginPage'
+import HomePage from './components/HomePage'
+import UsersPage from './components/UsersPage'
+import User from './components/User'
+import BlogView from './components/BlogView'
+import { initializeUsers } from './reducers/userReducer'
 import Navbar from './components/Navbar'
-
-import {getBlogs} from './reducers/blogsReducer'
-import {setLogin} from './reducers/loginReducer'
-import {setErrorMessage} from './reducers/errorMessageReducer'
-import {setError} from './reducers/errorReducer'
-import {getUsers} from './reducers/usersReducer'
-
-
 
 
 const App = () => {
-
   const dispatch = useDispatch()
-  const {username, password} = useSelector(state => state.loginFormReducer)
 
   useEffect(() => {
-    dispatch(getUsers())
-    dispatch(getBlogs())
-  }, [dispatch])
+    dispatch(initializeBlogs())
+    dispatch(initializeUsers())
+  }, [dipatch])
 
-  let loggedUser = useSelector(state => state.loginReducer)
- 
-  
-const handleLogin = async (event) => {
-    event.preventDefault()
-    try {
-      await dispatch(setLogin({username, password}))
-      await dispatch(setError(false))
-      await dispatch(setErrorMessage('You are now logged in'))
+  const user = useSelector(state => state.login)
 
-    } catch(exception) {
-      console.log(exception)
-      await dispatch(setError(true))
-      await dispatch(setErrorMessage('wrong user name or password'))
-    }  
-    setTimeout(() => {
-       dispatch(setErrorMessage(null))
-    }, 5000)
-  }
-
-    // Check if user in localStorage
-    useEffect(() => {
-      const loggedInUserJSON = JSON.parse(
-        window.localStorage.getItem('loggedUser'),
-      )
-      if (loggedInUserJSON) {
-        const loggedUser = loggedInUserJSON
-        blogService.setToken(loggedUser?.token)
-      }
-    }, [])
-
-
+  //check if user is in local storage
   useEffect(() => {
-    const loggedUserJSON = JSON.parse(window.localStorage.getItem('loggedUser'))
-    if (loggedUserJSON) {
-      blogService.setToken(loggedUserJSON.token)
-      
+    const loggedInUserJSON = JSON.parse(
+      window.localStorage.getItem('loggedInBloglistUser'),
+    )
+    if(loggedInUserJSON) {
+      const user = loggedInUserJSON
+      blogService.setToken(user?.token)
     }
-  }, [loggedUser])
+  }, [])
 
-
+  useEffect(() => {
+    window.localStorage.setItem('loggedInBlogUser', JSON.stringify(user))
+    blogService.setToken(user?.token)
+  }, [user])
 
   if(loggedUser === null ){
     return (
