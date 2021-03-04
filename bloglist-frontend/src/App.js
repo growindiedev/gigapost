@@ -38,45 +38,28 @@ const App = () => {
     blogService.setToken(user?.token)
   }, [user])
 
-  if(loggedUser === null ){
-    return (
-      <div>
-        <Navbar user={loggedUser} />
-        <Notification/>
-        <LoginForm handleLogin = {handleLogin}/>
-      </div>
-    )
-  } 
+
   return (
-    <div>
-    <Navbar user={loggedUser} />
-    <Notification/>
-    <h2>Blogs App</h2>
-    <Togglable label1="create blog" label2="cancel">
-    <BlogForm/>
-    </Togglable>
-
-    <Switch>
-
-    <Route exact path="/users">
-    <ShowUsers/>
-    </Route>
-
-    <Route  path="/users/:id">
-      <Bloglist/>
-    </Route>
-
-    <Route exact path="/blogs">
-      <ShowBlogs/>
-    </Route>
-
-    <Route path="/blogs/:id">
-      <Blog/>
-    </Route>
-    
-    </Switch>
-    
-     </div>
+    <>
+      <Navbar/>
+        <main>
+          <div>
+            <Link to="/">
+              Gigapost
+            </Link>
+            <Switch>
+              <Route path="/users/:id" component={User} />
+              <Route path="/blogs/:id" component={BlogView} />
+              <Route path="/login" exact component={LoginPage} />
+              <Route path="/users" exact component={UsersPage} />
+              <Route
+                path="/"
+                render={() => (user ? <HomePage /> : <Redirect to="/login" />)}
+              />
+            </Switch>
+          </div>
+        </main>
+    </>
   )
 }
 
