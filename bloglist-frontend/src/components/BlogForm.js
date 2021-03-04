@@ -1,76 +1,61 @@
-import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {setErrorMessage} from '../reducers/errorMessageReducer'
-import {setTitle, setAuthor, setUrl} from '../reducers/blogFormReducer'
-import {createBlog} from '../reducers/blogsReducer'
-import {setError} from '../reducers/errorReducer'
-import {useHistory} from 'react-router-dom'
-const BlogForm = () => {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const {title, author, url} = useSelector(state => state.blogFormReducer)
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { useFormik } from 'formik'
 
-  const addBlog = () => {
-    //event.preventDefault()
-    const newBlog = {title, author, url}
-    dispatch(createBlog(newBlog))
-    dispatch(setError(false))
-    dispatch(setErrorMessage(`a new blog ${title} by ${author} added`))
-    history.push('/blogs')
-    setTimeout(() => {
-    dispatch(setErrorMessage(null))
-   }, 5000)
-  }
 
-  const blogStyle = {
-    padding: 15,
-    border: 'solid',
-    borderWidth: 1,
-    margin: 10 
-  }
-  
-  
-    
-    return(
-      <div className="formDiv" style={blogStyle}>
-      <form onSubmit={addBlog}>
-        <h2>Create Blog</h2>
-        <div>
-        <label htmlFor="title">title</label>
-        <input
+const BlogForm = ({createBlog}) => {
+
+  const formik = useFormik({
+    initialValues: {
+      title: '',
+      author: '',
+      url: '',
+      likes: 0
+    },
+    onSubmit: (values) => {
+      try {
+        const blog = {
+          title: values.title,
+          author: values.author,
+          url: values.url,
+          likes: values.likes,
+        }
+        createBlog(blog)
+        
+      } catch (err) {
+        console.error(err)
+      }
+    },
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <input 
         type="text"
-        value={title}
-        id="title"
         name="title"
-        onChange={(event) => dispatch(setTitle(event.target.value))}
-        />
-      </div>
-      <div>
-        <label htmlFor="author">author</label>
-        <input
+        onChange={formik.handleChange}
+        value={formik.values.title}
+      />
+      <input 
         type="text"
-        value={author}
-        id="author"
         name="author"
-        onChange={(event) => dispatch(setAuthor(event.target.value))}
-        />
-      </div>
-      <div>
-        <label htmlFor="URL">url</label>
-        <input
+        onChange={formik.handleChange}
+        value={formik.values.author}
+      />
+      <input 
         type="text"
-        value={url}
-        id="URL"
         name="url"
-        onChange={(event) => dispatch(setUrl(event.target.value))}
-        />
-      </div>
-      <button type="submit" className="submit">create</button>
-      </form>
-      </div>
-    )
-  }
-
-  
+        onChange={formik.handleChange}
+        value={formik.values.url}
+      />
+      <button type={submit}>
+        Create
+      </button>
+    </form>
+  )
+}
 
 export default BlogForm
+BlogForm.propTypes = {
+  createBlog: PropTypes.func.isRequired,
+}
