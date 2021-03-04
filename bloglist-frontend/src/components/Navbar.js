@@ -1,58 +1,50 @@
 import React from 'react'
-import {Link, useHistory} from 'react-router-dom'
-import {useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../reducers/loginReducer'
+import { NavLink, useHistory } from 'react-router-dom'
 
-import {setUsername, setPassword} from '../reducers/loginFormReducer'
-import {setLogout} from '../reducers/loginReducer'
+const Navbar = () => {
+    const user = useSelector(state => state.login) 
 
-
-
-
-function Navbar({user}) {
-    const history = useHistory()
     const dispatch = useDispatch()
+    const history = useHistory()
 
-    const handleLogout = (event) => {
-        event.preventDefault()
-        window.localStorage.removeItem('loggedUser')
-        dispatch(setLogout())
+    const handleLogout = () => {
+        window.localStorage.removeItem('loggedInBloglistUser')
+        dispatch(logout())
         history.push('/')
-        dispatch(setUsername(''))
-        dispatch(setPassword(''))
-      }
-
+    }
 
     if(user){
         return (
-        
             <nav>
                 <ul>
                     <li>
-                        <Link to="/blogs">Blogs</Link>
+                        <Navlink to="/blogs">blogs</Navlink>
                     </li>
                     <li>
-                        <Link to="/users">users</Link>
+                        <Navlink to="/users">users</Navlink>
                     </li>
                 </ul>
                 <ul>
                     <li>
-                        <span>{`${user.username} logged in`}</span>
+                        <span>{user?.name} logged in</span>
                     </li>
                     <li>
-                        <button onClick={handleLogout}>logout</button>
+                        <button onClick={handleLogout}>
+                            Logout
+                        </button>
                     </li>
                 </ul>
             </nav>
-        
         )
     } else {
-        return (
-            <nav>
-                <p>Login or Register as a new users</p>
-            </nav>
-        )
+        <nav>
+            <button onClick={handleLogout}>
+                Login
+            </button>
+        </nav>
     }
-    
 }
 
 export default Navbar
