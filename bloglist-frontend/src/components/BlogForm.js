@@ -12,7 +12,7 @@ const BlogForm = ({createBlog}) => {
       url: '',
       likes: 0
     },
-    onSubmit: (values) => {
+    onSubmit: (values, {resetForm}) => {
       try {
         const blog = {
           title: values.title,
@@ -21,7 +21,7 @@ const BlogForm = ({createBlog}) => {
           likes: values.likes,
         }
         createBlog(blog)
-        
+        resetForm()
       } catch (err) {
         console.error(err)
       }
@@ -31,18 +31,21 @@ const BlogForm = ({createBlog}) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <input 
+        placeholder="title"
         type="text"
         name="title"
         onChange={formik.handleChange}
         value={formik.values.title}
       />
       <input 
+        placeholder="author"
         type="text"
         name="author"
         onChange={formik.handleChange}
         value={formik.values.author}
       />
       <input 
+        placeholder="url"
         type="text"
         name="url"
         onChange={formik.handleChange}
