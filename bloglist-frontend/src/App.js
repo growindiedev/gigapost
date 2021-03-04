@@ -26,6 +26,12 @@ import {getUsers} from './reducers/usersReducer'
 const App = () => {
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getBlogs())
+    dispatch(getUsers())
+  }, [dispatch])
+
   const {username, password} = useSelector(state => state.loginFormReducer)
 
 
@@ -59,6 +65,10 @@ const handleLogin = async (event) => {
 
   let loggedUser = useSelector(state => state.loginReducer)
 
+  useEffect(() => {
+    window.localStorage.setItem('loggedUser', JSON.stringify(loggedUser))
+    blogService.setToken(loggedUser?.token)
+  }, [loggedUser])
 
   if(loggedUser === null ){
     return (

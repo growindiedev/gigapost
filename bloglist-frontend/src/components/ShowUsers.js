@@ -6,8 +6,8 @@ import {getUsers} from '../reducers/usersReducer'
 
 
 function ShowUsers() {
-    const dispatch = useDispatch()
-    dispatch(getUsers())
+    // const dispatch = useDispatch()
+    // dispatch(getUsers())
 
     const users = useSelector(state => state.usersReducer)
     const people = users.map((user, i) => <div key={i}>

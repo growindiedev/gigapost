@@ -7,8 +7,8 @@ import {getBlogs} from '../reducers/blogsReducer'
 
 const ShowBlogs = () => {
 
-    const dispatch = useDispatch()
-    dispatch(getBlogs())
+    // const dispatch = useDispatch()
+    // dispatch(getBlogs())
     const blogs = useSelector(state => state.blogsReducer)
     const user = useSelector(state => state.loginReducer)
     console.log('jerry', user)
