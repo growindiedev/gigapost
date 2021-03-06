@@ -1,19 +1,18 @@
 import React from 'react'
-import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
 import Notification from './Notification'
 import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
-import { login } from '../reducers/loginReducer'
+import { registerUser } from '../reducers/loginReducer'
 import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
-
-const LoginPage = () => {
+const RegisterPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const handleLogin = async (username, password) => {
-        if (!username || username === '' || !password || password === '') {
+
+      const handleRegister = async (username, password, name) => {
+        if (!username || username === '' || !password || password === '' || name === '') {
           console.log('something went wrong')
           dispatch(
             setNotification({ error: 'Please fill in username and password' }, 5),
@@ -22,7 +21,7 @@ const LoginPage = () => {
         }
     
         try {
-          await dispatch(login(username, password))
+          await dispatch(registerUser(username, password, name))
     
           history.push('/')
     
@@ -30,7 +29,7 @@ const LoginPage = () => {
           dispatch(
             setNotification(
               {
-                notification: `${username} succesfully logged in`,
+                notification: `${username} succesfully registered`,
               },
               5,
             ),
@@ -40,7 +39,7 @@ const LoginPage = () => {
           dispatch(
             setNotification(
               {
-                error: 'wrong username or password',
+                error: 'user already exists or something went wrong',
               },
               5,
             ),
@@ -51,12 +50,11 @@ const LoginPage = () => {
 
     return (
         <>
-            <h2>Login to application or </h2>
+            <h2>Sign Up</h2>
             <Notification/>
-            <LoginForm handleLogin={handleLogin}/>
-            <h3>Not a registered user? <Link to="/signup">signup</Link> here</h3>
+            <RegisterForm handleRegister={handleRegister}/>
         </>
     )
 }
 
-export default LoginPage
+export default RegisterPage

@@ -1,4 +1,5 @@
 import loginService from '../services/login'
+import userService from '../services/users'
 
 const loggedInUserJSON = JSON.parse(
   window.localStorage.getItem('loggedInBloglistUser'),
@@ -12,6 +13,8 @@ const loginReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'LOGIN':
+      return action.data
+    case 'REGISTER_USER':
       return action.data
     case 'LOGOUT': {
       return null
@@ -28,6 +31,18 @@ export const login = (username, password) => {
     console.log('called')
     dispatch({
       type: 'LOGIN',
+      data: user,
+    })
+  }
+}
+
+export const registerUser = (username, password, name) => {
+  return async (dispatch) => {
+    const user = await userService.registerUser({ username, password, name})
+    console.log({ user })
+    console.log('called')
+    dispatch({
+      type: 'REGISTER_USER',
       data: user,
     })
   }

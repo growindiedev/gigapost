@@ -8,6 +8,7 @@ import HomePage from './components/HomePage'
 import UsersPage from './components/UsersPage'
 import User from './components/User'
 import BlogView from './components/BlogView'
+import RegisterPage from './components/RegisterPage'
 import { initializeUsers } from './reducers/userReducer'
 import Navbar from './components/Navbar'
 
@@ -51,6 +52,7 @@ const App = () => {
               <Route path="/users/:id" component={User} />
               <Route path="/blogs/:id" component={BlogView} />
               <Route path="/login" exact component={LoginPage} />
+              <Route path="/signup" exact component={RegisterPage} />
               <Route path="/users" exact component={UsersPage} />
               <Route
                 path="/"

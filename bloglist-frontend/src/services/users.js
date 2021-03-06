@@ -7,8 +7,8 @@ const getAll = async () => {
     return response.data
   }
 
-const registerUser = async (newUser) => {
-   const response = await axios.post(baseUrl, newUser)
+const registerUser = async (credentials) => {
+   const response = await axios.post(baseUrl, credentials)
    return response.data
 }
 
