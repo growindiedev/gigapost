@@ -35,7 +35,7 @@ const LoginForm = ({handleLogin}) => {
         value={formik.values.password}
       />
       
-      <button type={submit}>
+      <button type="submit">
         Login
       </button>
     </form>

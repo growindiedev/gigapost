@@ -51,7 +51,7 @@ const BlogForm = ({createBlog}) => {
         onChange={formik.handleChange}
         value={formik.values.url}
       />
-      <button type={submit}>
+      <button type="submit">
         Create
       </button>
     </form>
