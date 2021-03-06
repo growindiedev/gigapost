@@ -1,6 +1,5 @@
 import React, {useState, forwardRef, useImperativeHandle} from 'react'
-import Proptypes from 'prop-types'
-import React from 'react'
+import PropTypes from 'prop-types'
 
 const Togglable = forwardRef(({btnText, children}, ref) => {
     const [visible, setVisible] = useState(false)

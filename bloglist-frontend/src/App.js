@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     dispatch(initializeBlogs())
     dispatch(initializeUsers())
-  }, [dipatch])
+  }, [dispatch])
 
   const user = useSelector(state => state.login)
 

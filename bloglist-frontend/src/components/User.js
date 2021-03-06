@@ -2,7 +2,6 @@ import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import React from 'react'
 
 const User = () => {
     const users = useSelector(state => state.users)

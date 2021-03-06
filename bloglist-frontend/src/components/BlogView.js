@@ -89,7 +89,7 @@ const BlogView = () => {
                 </button>
                 )}
             </div> 
-            <h2 className={styles.commentTitle}>Comments</h2>
+            <h2>Comments</h2>
             <CommentForm />
             {blog.comments && blog.comments.length !== 0 ? (
                 <ul>

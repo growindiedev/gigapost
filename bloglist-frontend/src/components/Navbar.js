@@ -20,10 +20,10 @@ const Navbar = () => {
             <nav>
                 <ul>
                     <li>
-                        <Navlink to="/blogs">blogs</Navlink>
+                        <NavLink to="/blogs">blogs</NavLink>
                     </li>
                     <li>
-                        <Navlink to="/users">users</Navlink>
+                        <NavLink to="/users">users</NavLink>
                     </li>
                 </ul>
                 <ul>
@@ -39,11 +39,13 @@ const Navbar = () => {
             </nav>
         )
     } else {
+        return (
         <nav>
             <button onClick={handleLogout}>
                 Login
             </button>
         </nav>
+        )
     }
 }
 
