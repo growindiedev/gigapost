@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
 import { registerUser } from '../reducers/loginReducer'
 import { useHistory } from 'react-router-dom'
+import {VStack} from '@chakra-ui/react'
+
 
 const RegisterPage = () => {
     const dispatch = useDispatch()
@@ -50,9 +52,10 @@ const RegisterPage = () => {
 
     return (
         <>
-            <h2>Sign Up</h2>
+            <VStack py="40" spacing="5">
             <Notification/>
             <RegisterForm handleRegister={handleRegister}/>
+            </VStack>
         </>
     )
 }

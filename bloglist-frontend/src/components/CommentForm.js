@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 import { createComment } from '../reducers/blogReducer'
@@ -41,7 +41,7 @@ const CommentForm = () => {
                 value={formik.values.comment}
             />            
             <button type="submit">
-                Login
+                Comment
             </button>
         </form>
     )

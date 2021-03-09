@@ -11,6 +11,7 @@ import BlogView from './components/BlogView'
 import RegisterPage from './components/RegisterPage'
 import { initializeUsers } from './reducers/userReducer'
 import Navbar from './components/Navbar'
+import { ChakraProvider } from "@chakra-ui/react"
 
 
 const App = () => {
@@ -24,30 +25,28 @@ const App = () => {
   const user = useSelector(state => state.login)
 
   //check if user is in local storage
-  useEffect(() => {
+useEffect(() => {
     const loggedInUserJSON = JSON.parse(
       window.localStorage.getItem('loggedInBloglistUser'),
     )
-    if(loggedInUserJSON) {
+    if (loggedInUserJSON) {
       const user = loggedInUserJSON
       blogService.setToken(user?.token)
     }
   }, [])
 
   useEffect(() => {
-    window.localStorage.setItem('loggedInBlogUser', JSON.stringify(user))
+    window.localStorage.setItem('loggedInBloglistUser', JSON.stringify(user))
     blogService.setToken(user?.token)
   }, [user])
 
 
   return (
     <>
+      <ChakraProvider >
       <Navbar/>
         <main>
           <div>
-            <Link to="/">
-              Gigapost
-            </Link>
             <Switch>
               <Route path="/users/:id" component={User} />
               <Route path="/blogs/:id" component={BlogView} />
@@ -61,6 +60,7 @@ const App = () => {
             </Switch>
           </div>
         </main>
+        </ChakraProvider>
     </>
   )
 }

@@ -6,6 +6,7 @@ import { setNotification } from '../reducers/notificationReducer'
 import { login } from '../reducers/loginReducer'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import {VStack} from '@chakra-ui/react'
 
 
 const LoginPage = () => {
@@ -50,11 +51,12 @@ const LoginPage = () => {
       }
 
     return (
-        <>
-            <h2>Login to application or </h2>
+        <>  
             <Notification/>
+            <VStack py="40" maxHeight="max-content" spacing="5">
+            {/* <Notification w="350px"/> */}
             <LoginForm handleLogin={handleLogin}/>
-            <h3>Not a registered user? <Link to="/signup">signup</Link> here</h3>
+            </VStack>
         </>
     )
 }

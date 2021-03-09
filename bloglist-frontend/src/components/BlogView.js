@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouteMatch, useHistory } from 'react-router-dom'
-import { FaRegHeart } from 'react-icons/fa'
 import Comment from './Comment'
 import { likeBlog, removeBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'

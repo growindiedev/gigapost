@@ -1,8 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {useFormik} from 'formik'
+import { BiUserCircle } from 'react-icons/bi'
+import {FcLock} from 'react-icons/fc'
+
+import {
+	Input,
+	Stack,
+	InputGroup,
+	InputLeftElement,
+	Button,
+	FormControl,
+	
+} from '@chakra-ui/react';
 
 const LoginForm = ({handleLogin}) => {
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -19,26 +32,76 @@ const LoginForm = ({handleLogin}) => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <input
-        placeholder="username"
-        type="text"
-        name="username"
-        onChange={formik.handleChange}
-        value={formik.values.username}
-      />
-      <input 
-        placeholder="password"
-        type="text"
-        name="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
+
+    // <form onSubmit={formik.handleSubmit}>
+    //   <input
+    //     placeholder="username"
+    //     type="text"
+    //     name="username"
+    //     onChange={formik.handleChange}
+    //     value={formik.values.username}
+    //   />
+    //   <input 
+    //     placeholder="password"
+    //     type="text"
+    //     name="password"
+    //     onChange={formik.handleChange}
+    //     value={formik.values.password}
+    //   />
       
-      <button type="submit">
-        Login
-      </button>
-    </form>
+    //   <button type="submit">
+    //     Login
+    //   </button>
+    // </form>
+    
+    <form onSubmit={formik.handleSubmit}>
+			<Stack spacing={3} bg="gray.200"
+			w='350px'
+			p={3}
+			boxShadow='m'
+			rounded='lg'>
+        
+				<FormControl isRequired >
+					<InputGroup>
+						<InputLeftElement children={<BiUserCircle/>} />
+						<Input 
+							type='text' name='username' 
+							placeholder='username' 
+							area-lable='username' 
+							onChange={formik.handleChange} 
+							value={formik.values.username}
+							bg='white'
+							/>
+					</InputGroup>
+				</FormControl>
+				<FormControl isRequired >
+					<InputGroup>
+						<InputLeftElement children={<FcLock/>} />
+						<Input
+							type='password'
+							placeholder='Password'
+							aria-lable='Password'
+              name='password'
+							onChange={formik.handleChange}
+							value={formik.values.password}
+							bg='white'
+						/>
+					</InputGroup>
+				</FormControl>
+				<Button
+					type='submit'
+					boxShadow='sm'
+					_hover={{ boxShadow: 'md' }}
+					_active={{ boxShadow: 'lg' }}
+          width="100"
+					>
+					Login
+				</Button>
+				
+				
+				
+			</Stack>
+		</form>
   )
 }
 
