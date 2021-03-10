@@ -50,8 +50,8 @@ useEffect(() => {
             <Switch>
               <Route path="/users/:id" component={User} />
               <Route path="/blogs/:id" component={BlogView} />
-              <Route path="/login" exact component={LoginPage} />
-              <Route path="/signup" exact component={RegisterPage} />
+              <Route path="/login" exact render={() => (user ? <Redirect to="/"/> : <LoginPage/>)}/>
+              <Route path="/signup" exact render={() => (user ? <Redirect to="/"/> : <RegisterPage/>)} />
               <Route path="/users" exact component={UsersPage} />
               <Route
                 path="/"

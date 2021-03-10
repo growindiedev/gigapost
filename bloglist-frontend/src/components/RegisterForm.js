@@ -4,29 +4,41 @@ import {useFormik} from 'formik'
 import { BiUserCircle } from 'react-icons/bi'
 import {FcLock} from 'react-icons/fc'
 import {IoIosPersonAdd} from 'react-icons/io'
-
+import UseAnimations from "react-useanimations";
+import satisfied from 'react-useanimations/lib/loading2'
+import { setNotification } from '../reducers/notificationReducer'
+import { useDispatch } from 'react-redux'
 
 import {
 	Input,
 	Stack,
-	Icon,
 	InputGroup,
 	InputLeftElement,
 	Button,
 	FormControl,
 	FormHelperText,
-	Image
+	Image,
+  Center
 } from '@chakra-ui/react';
-import {EmailIcon, LockIcon} from '@chakra-ui/icons'
 
 const RegisterForm = ({handleRegister}) => {
+
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
+      confirmPassword: '',
       name: ''
     },
     onSubmit: (values, {resetForm}) => {
+      if (values.password !== values.confirmPassword) {
+        dispatch(
+            setNotification({ error: 'Passwords do not watch' }, 5),
+          )
+          return
+      }
       try {
         handleRegister(values.username, values.password, values.name)
         resetForm()
@@ -73,6 +85,10 @@ const RegisterForm = ({handleRegister}) => {
     p={3}
     boxShadow='m'
     rounded='lg'>
+      {/* <Image w='100px' src='./gigaLogo.png' alt='Logo' mx="auto"/> */}
+      <Center>
+				<UseAnimations animation={satisfied}  size={50}  strokeColor="gray"/>
+				</Center>
       <FormControl isRequired >
       <InputGroup>
           <InputLeftElement children={<IoIosPersonAdd/>} />
@@ -113,6 +129,20 @@ const RegisterForm = ({handleRegister}) => {
           />
         </InputGroup>
       </FormControl>
+        <FormControl isRequired>
+					<InputGroup>
+						<InputLeftElement children={<FcLock />} />
+						<Input
+							type='password'
+							name='confirmPassword'
+							placeholder='confirm password'
+							aria-lable='confirmPassword'
+              onChange={formik.handleChange} 
+              value={formik.values.confirmPassword}
+							bg='white'
+						/>
+					</InputGroup>
+				</FormControl>
       <Button
         type='submit'
         boxShadow='sm'
