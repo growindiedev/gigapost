@@ -12,15 +12,16 @@ const BlogView = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const match = useRouteMatch('/blogs/:id')
-  const blog = match ? blogs?.find((blog) => blog.id === match.params.id) : null
+  const blog = match ? blogs.find((blog) => blog.id === match.params.id) : null
 
   const addLike = async () => {
       try {
-          const {id, author, url, title} = blog
+          const {id, author, content, url, title} = blog
           const updatedBlog = {
             user: blog.user?.id || blog.user,
             likes: blog.likes + 1,
             title,
+            content,
             author,
             url,
           }
@@ -70,6 +71,7 @@ const BlogView = () => {
            <div>
                <h1>{blog.title}</h1>
                <div>{blog.author}</div>
+               <div>{blog.content}</div>
                <a href={blog.url}>{blog.url}</a>
             <div>
                 <span>{blog.likes}</span>

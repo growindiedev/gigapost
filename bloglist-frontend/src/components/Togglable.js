@@ -1,6 +1,6 @@
 import React, {useState, forwardRef, useImperativeHandle} from 'react'
 import PropTypes from 'prop-types'
-import { Button, Box } from '@chakra-ui/react';
+import { Button, Box, VStack } from '@chakra-ui/react';
 
 const Togglable = forwardRef(({btnText, children}, ref) => {
     const [visible, setVisible] = useState(false)
@@ -20,18 +20,32 @@ const Togglable = forwardRef(({btnText, children}, ref) => {
 
 
     return (
-        <>
-            <Button onClick={toggleVisibility} style={showWhenVisible}>
+        <VStack>
+            <Button onClick={toggleVisibility}
+            size="sm" 
+            _hover={{ boxShadow: 'md' }}
+            _active={{ boxShadow: 'lg' }}
+            borderRadius="sm"
+             width="20"
+            style={hideWhenVisible} >
                 {btnText}
             </Button>
 
-            <Box style={hideWhenVisible}>
+            <Box style={showWhenVisible} >
                 {children}
-                <Button onClick={toggleVisibility} >
-                    Cancel
+                <Button
+                onClick={toggleVisibility}
+                 size="sm" 
+                 _hover={{ boxShadow: 'md' }}
+				_active={{ boxShadow: 'lg' }}
+                borderRadius="sm"
+          		width="20"
+                
+                  >
+                Cancel
                 </Button>
             </Box>
-        </>
+        </VStack>
     )
 })
 

@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
-import {Input, Button} from '@chakra-ui/react'
+import {Input, Button, VStack, FormControl, InputGroup, InputLeftElement, Textarea} from '@chakra-ui/react'
+import { MdFindInPage } from 'react-icons/md'
+import { BsPersonLinesFill } from 'react-icons/bs'
+import { FaPencilAlt } from 'react-icons/fa'
 
 
 const BlogForm = ({createBlog}) => {
@@ -10,6 +13,7 @@ const BlogForm = ({createBlog}) => {
     initialValues: {
       title: '',
       author: '',
+      content: '',
       url: '',
       likes: 0
     },
@@ -18,6 +22,7 @@ const BlogForm = ({createBlog}) => {
         const blog = {
           title: values.title,
           author: values.author,
+          content: values.content,
           url: values.url,
           likes: values.likes,
         }
@@ -30,31 +35,68 @@ const BlogForm = ({createBlog}) => {
   });
 
   return (
+    
     <form onSubmit={formik.handleSubmit}>
-      <Input 
-        placeholder="title"
-        type="text"
-        name="title"
-        onChange={formik.handleChange}
-        value={formik.values.title}
-      />
-      <Input 
-        placeholder="author"
-        type="text"
-        name="author"
-        onChange={formik.handleChange}
-        value={formik.values.author}
-      />
-      <Input 
-        placeholder="url"
-        type="text"
-        name="url"
-        onChange={formik.handleChange}
-        value={formik.values.url}
-      />
-      <Button type="submit">
+      <VStack w="xl"  spacing="2" justify="left" p="10">
+      <FormControl isRequired >
+					<InputGroup size="sm">
+						<InputLeftElement children={<FaPencilAlt/>} />
+            <Input 
+              placeholder="Title"
+              type="text"
+              name="title"
+              onChange={formik.handleChange}
+              value={formik.values.title}
+            />
+          </InputGroup>
+			</FormControl>
+      <FormControl isRequired >
+					<InputGroup size="sm">
+						<InputLeftElement children={<BsPersonLinesFill/>} />
+            <Input 
+              placeholder="Author"
+              type="text"
+              name="author"
+              onChange={formik.handleChange}
+              value={formik.values.author}
+            />
+          </InputGroup>
+			</FormControl>
+      <FormControl isRequired >
+					<InputGroup size="sm">
+            <Textarea 
+              placeholder="📝 Content"
+              type="text"
+              name="content"
+              onChange={formik.handleChange}
+              value={formik.values.content}
+            />
+          </InputGroup>
+			</FormControl>
+      <FormControl isRequired >
+					<InputGroup size="sm">
+						<InputLeftElement children={<MdFindInPage/>} />
+            <Input 
+              placeholder="URL"
+              type="text"
+              name="url"
+              onChange={formik.handleChange}
+              value={formik.values.url}
+            />
+          </InputGroup>
+			</FormControl>
+      <Button 
+      type="submit" 
+      size='sm' 
+      _hover={{ boxShadow: 'md' }}
+			_active={{ boxShadow: 'lg' }}
+      borderRadius="sm"
+      width="20"
+      >
         Create
       </Button>
+      
+      </VStack>
     </form>
   )
 }

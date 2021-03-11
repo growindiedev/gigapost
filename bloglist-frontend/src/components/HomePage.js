@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import Blog from './Blog'
-import {VStack} from '@chakra-ui/react';
+import {VStack, Heading, Box, HStack, Center, Stack} from '@chakra-ui/react';
+import UseAnimations from "react-useanimations";
+import satisfied from 'react-useanimations/lib/loading2'
 
 const HomePage = () => {
     const blogs = useSelector(state => state.blogs)
@@ -53,20 +55,23 @@ const HomePage = () => {
 
 
     return (
-        <VStack spacing="2">
-            <Notification />
-            <h1>Create New</h1>
-            <Togglable btnText="New Blog" ref={blogFormRef}>
+        <VStack spacing="3" p="10">
+             <Notification w="xl"/>
+             <Stack  align="flex-start" justify="center" w="xl" py="5" spacing="3">
+
+            <Heading fontSize="xx-large" textColor="gray.700"><UseAnimations animation={satisfied}  size={50}  strokeColor="inherit"/>Gigablog</Heading>
+            <Togglable btnText="New Blog" ref={blogFormRef} >
+            
             <BlogForm createBlog={addBlog} />
             </Togglable>
-
-            <div>
+            </Stack>
+            <VStack spacing="3">
                {blogs
                 .sort((a, b) => b.likes - a.likes)
                 .map((blog) => (
                 <Blog key={blog.id} blog={blog} />
                 ))} 
-            </div>
+            </VStack>
         </VStack>
     )
 }

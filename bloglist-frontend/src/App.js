@@ -43,11 +43,10 @@ useEffect(() => {
 
   return (
     <>
-      <ChakraProvider >
       <Navbar/>
         <main>
-          <div>
             <Switch>
+
               <Route path="/users/:id" component={User} />
               <Route path="/blogs/:id" component={BlogView} />
               <Route path="/login" exact render={() => (user ? <Redirect to="/"/> : <LoginPage/>)}/>
@@ -58,9 +57,7 @@ useEffect(() => {
                 render={() => (user ? <HomePage /> : <Redirect to="/login" />)}
               />
             </Switch>
-          </div>
         </main>
-        </ChakraProvider>
     </>
   )
 }

@@ -27,7 +27,8 @@ const Navbar = () => {
            
             <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="2">
                 <Box px="2">
-                <Image w='120px' src='./logo.png' alt='Logo' width="2rem"/>
+                    <NavLink to="/"><Image w='120px' src='/logo.png' alt='Logo' width="2rem"/></NavLink>
+                
                     {/* <Heading size="md">GigaPost</Heading> */}
                 </Box>
                 <Box px="2"> 
@@ -47,9 +48,9 @@ const Navbar = () => {
         )
     } else {
         return (
-        <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="1.2">
-        <Box py="1.5" px="2">
-        <Image w='120px' src='./gigaLogo.png' alt='Logo' />
+        <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="1.5">
+        <Box  px="2">
+        <NavLink to="/"><Image w='120px' src='/gigaLogo.png' alt='Logo' size="l"/></NavLink>
             {/* <Heading size="md">GigaPost</Heading> */}
         </Box>
         <Spacer />
