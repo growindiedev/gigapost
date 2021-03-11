@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
+import {Input, Button} from '@chakra-ui/react'
 
 
 const BlogForm = ({createBlog}) => {
@@ -30,30 +31,30 @@ const BlogForm = ({createBlog}) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <input 
+      <Input 
         placeholder="title"
         type="text"
         name="title"
         onChange={formik.handleChange}
         value={formik.values.title}
       />
-      <input 
+      <Input 
         placeholder="author"
         type="text"
         name="author"
         onChange={formik.handleChange}
         value={formik.values.author}
       />
-      <input 
+      <Input 
         placeholder="url"
         type="text"
         name="url"
         onChange={formik.handleChange}
         value={formik.values.url}
       />
-      <button type="submit">
+      <Button type="submit">
         Create
-      </button>
+      </Button>
     </form>
   )
 }

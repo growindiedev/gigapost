@@ -69,7 +69,7 @@ const LoginForm = ({handleLogin}) => {
 							type='password'
 							placeholder='Password'
 							aria-lable='Password'
-              name='password'
+              				name='password'
 							onChange={formik.handleChange}
 							value={formik.values.password}
 							bg='white'

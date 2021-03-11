@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import Blog from './Blog'
+import {VStack} from '@chakra-ui/react';
 
 const HomePage = () => {
     const blogs = useSelector(state => state.blogs)
@@ -52,7 +53,7 @@ const HomePage = () => {
 
 
     return (
-        <>
+        <VStack spacing="2">
             <Notification />
             <h1>Create New</h1>
             <Togglable btnText="New Blog" ref={blogFormRef}>
@@ -66,7 +67,7 @@ const HomePage = () => {
                 <Blog key={blog.id} blog={blog} />
                 ))} 
             </div>
-        </>
+        </VStack>
     )
 }
 
