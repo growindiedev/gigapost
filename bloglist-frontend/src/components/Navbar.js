@@ -25,7 +25,7 @@ const Navbar = () => {
     if(user){
         return (
            
-            <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="2">
+            <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="2" >
                 <Box px="2">
                     <NavLink to="/"><Image w='120px' src='/logo.png' alt='Logo' width="2rem"/></NavLink>
                 

@@ -7,5 +7,4 @@ const Comment = (props) => {
   return <Alert {...props} colorScheme={items[Math.floor(Math.random() * items.length)]}>{props.comment.title || props.comment}</Alert>
 }
 
-// status={items[Math.floor(Math.random() * items.length)]}
 export default Comment
