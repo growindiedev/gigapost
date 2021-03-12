@@ -22,11 +22,11 @@ const {authenticateToken} = require('../utils/middleware')
   blogsRouter.post('/', authenticateToken , async (request, response) => {
 
 
-      const {title, author, url, likes} = request.body
+      const {title, author, url, likes, content} = request.body
 
       const decodedToken = request.decodedToken
       const user = await User.findById(decodedToken.id)
-      const blog = new Blog({title, author, url, likes, user: user.id})
+      const blog = new Blog({title, author, url, likes, user: user.id, content})
 
       const savedBlog = await blog.save()
       user.blogs = user.blogs.concat(savedBlog.id)

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useRouteMatch } from 'react-router-dom'
 import { createComment } from '../reducers/blogReducer'
 import {useFormik} from 'formik'
+import {Input, Button, FormControl, InputGroup, InputLeftElement, HStack} from '@chakra-ui/react'
+import {AiOutlineComment} from 'react-icons/ai'
+import {BiCommentAdd} from 'react-icons/bi'
 
 const CommentForm = () => {
 
@@ -33,16 +36,30 @@ const CommentForm = () => {
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <input
-                placeholder="comment"
-                type="text"
-                name="comment"
-                onChange={formik.handleChange}
-                value={formik.values.comment}
-            />            
-            <button type="submit">
-                Comment
-            </button>
+          <HStack w="lg">
+          <FormControl isRequired >
+                <InputGroup size="sm">
+                  <InputLeftElement children={<AiOutlineComment/>} />
+                  <Input 
+                    placeholder="comment"
+                    type="text"
+                    name="comment"
+                    onChange={formik.handleChange}
+                    value={formik.values.comment}
+                  />
+                </InputGroup>
+            </FormControl>
+                     
+            <Button 
+            type="submit" 
+            size='sm' 
+            _hover={{ boxShadow: 'md' }}
+            _active={{ boxShadow: 'lg' }}
+            borderRadius="sm"
+            bg="gray.200"
+            > <BiCommentAdd/>
+            </Button>
+            </HStack>
         </form>
     )
 }

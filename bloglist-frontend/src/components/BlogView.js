@@ -5,6 +5,9 @@ import Comment from './Comment'
 import { likeBlog, removeBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import CommentForm from './CommentForm'
+import { GrLike } from 'react-icons/gr'
+import {VStack, Box, Button, Icon, Heading, Text, HStack, Stack, Badge} from '@chakra-ui/react'
+
 
 const BlogView = () => {
   const blogs = useSelector((state) => state.blogs)
@@ -67,41 +70,54 @@ const BlogView = () => {
   }
 
     return (
-        <>
-           <div>
-               <h1>{blog.title}</h1>
-               <div>{blog.author}</div>
-               <div>{blog.content}</div>
-               <a href={blog.url}>{blog.url}</a>
-            <div>
-                <span>{blog.likes}</span>
-                <button onClick={addLike}>
-                    like
-                </button>
-                <span > &#8226;</span>
-                <span >Added by </span>
-                <span >{blog.user?.name}</span>
-            </div>
+        <VStack w="xl" p="10" mx="auto">
+           <Stack w="xl" borderWidth="1px" borderRadius="md" overflow="hidden" py="3" spacing="1" px="5">
+               <Heading size="md">{blog.title}</Heading>
+               <Text>{blog.author}</Text>
+               <Text>{blog.content}</Text>
+               <Text as="a" target="_" href={`https://${blog.url}`} _hover={{ fontColor: 'blue' }}>{blog.url}</Text>
+                <HStack spacing="2">
+                    <Text>{blog.likes}</Text>
+                    <Icon 
+                    size="md"
+                    _hover={{ boxShadow: 'md' }}
+                    _active={{ boxShadow: 'lg' }}
+                    borderRadius="sm"
+                    // width="20"
+                    as={GrLike}
+                    role="Button"
+                    onClick={addLike}
+                    />
+                    <Text>&#8226;</Text>
+                    <Badge colorScheme="orange"> {`Added by ${blog.user?.name}`}</Badge>
+                </HStack>
                 {blog.user?.username === user?.username && (
-                <button
+                <Button 
+                size='xs' 
+                _hover={{ boxShadow: 'md', bg: "red.200" }}
+                _active={{ boxShadow: 'lg' }}
+                borderRadius="sm"
+                width="20"
                 onClick={() => deleteBlog(blog.id, blog)}
+                bg="red.200"
+                p="3"
                 >
                 Remove
-                </button>
+                </Button>
                 )}
-            </div> 
-            <h2>Comments</h2>
+            </Stack> 
+            <Heading size="md" pt="10">Comments</Heading>
             <CommentForm />
             {blog.comments && blog.comments.length !== 0 ? (
                 <ul>
                 {blog.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
+                    <Comment key={comment.id} comment={comment} p="1.5" variant="left-accent" w="lg" m="2.5" borderRadius="md" size="sm"/>
                 ))}
                 </ul>
             ) : (
-                <span>Add the first comment for this blog</span>
+                <Comment comment='Add the first comment for this blog' p="1.5" variant="left-accent" w="lg" m="2" borderRadius="md"/>
             )}
-        </>
+        </VStack>
     )
 }
 

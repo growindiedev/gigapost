@@ -59,7 +59,7 @@ const HomePage = () => {
              <Notification w="xl"/>
              <Stack  align="flex-start" justify="center" w="xl" py="5" spacing="3">
 
-            <Heading fontSize="xx-large" textColor="gray.700"><UseAnimations animation={satisfied}  size={50}  strokeColor="inherit"/>Gigablog</Heading>
+            <Heading fontSize="xx-large" textColor="gray.700" p="1.5"><UseAnimations animation={satisfied}  size={50}  strokeColor="inherit"/>Gigapost</Heading>
             <Togglable btnText="New Blog" ref={blogFormRef} >
             
             <BlogForm createBlog={addBlog} />
