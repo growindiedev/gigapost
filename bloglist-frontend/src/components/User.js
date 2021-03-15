@@ -24,7 +24,7 @@ const User = () => {
     }
 
     return (
-        <VStack w="xl"  padding="10" spacing="5" mx="auto">
+        <VStack w="xl"  padding="10" spacing="5" mx="auto" color="gray.600">
             <Heading size="lg">{user.name}</Heading>
             
 

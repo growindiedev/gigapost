@@ -6,6 +6,7 @@ import { likeBlog, removeBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import CommentForm from './CommentForm'
 import { GrLike } from 'react-icons/gr'
+import { BsFillChatSquareQuoteFill } from 'react-icons/bs'
 import {VStack, Box, Button, Icon, Heading, Text, HStack, Stack, Badge} from '@chakra-ui/react'
 
 
@@ -70,7 +71,7 @@ const BlogView = () => {
   }
 
     return (
-        <VStack w="xxl" p="10" mx="auto" color="gray.600">
+        <VStack w="xl" p="10" mx="auto" color="gray.600">
            <Stack w="xl" borderWidth="2px" borderRadius="md" overflow="hidden" py="5" px="6" spacing="2.5"  boxShadow="md" borderColor="gray.200" >
                <Heading size="lg" >{blog.title}</Heading>
                <Heading size="sm" color="gray.500">{blog.author}</Heading>
@@ -106,7 +107,7 @@ const BlogView = () => {
                 </Button>
                 )}
             </Stack> 
-            <Heading size="md" pt="10">Comments</Heading>
+            <Heading size="sm" pt="10" pb="4" fontWeight="semibold" textAlign="left" ><Icon as={BsFillChatSquareQuoteFill}/> Comments</Heading>
             <CommentForm />
             {blog.comments && blog.comments.length !== 0 ? (
                 <ul>

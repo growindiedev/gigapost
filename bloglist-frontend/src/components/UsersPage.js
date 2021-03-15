@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {VStack, Box, Button, Icon, Heading, Text, HStack, Stack, Badge} from '@chakra-ui/react'
+import {VStack, Box, Heading} from '@chakra-ui/react'
 import {
     Table,
     Thead,
@@ -15,8 +15,8 @@ import {
 const UsersPage = () => {
     const users = useSelector(state => state.users)
     return (
-        <VStack p="10" mx="auto" width="xl">
-            <Heading size="lg" p="4">Users</Heading>
+        <VStack p="10" mx="auto" width="xl" color="gray.600">
+            <Heading size="lg" p="4" fontWeight="semibold">Users</Heading>
             <Box p={4} shadow="md" borderWidth="1px" width="lg" borderRadius="md" mx="auto">                
                 <Table size="md">
                 <TableCaption>Users and number of blogs created by them</TableCaption>
