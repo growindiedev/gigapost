@@ -6,7 +6,6 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     Td,
@@ -19,19 +18,6 @@ const UsersPage = () => {
         <VStack p="10" mx="auto" width="xl">
             <Heading size="lg" p="4">Users</Heading>
             <Box p={4} shadow="md" borderWidth="1px" width="lg" borderRadius="md" mx="auto">                
-                {/* 
-                <span>username</span>
-                <span>blogs created</span>
-                <ul>
-                {users?.map((user) => (
-                    <li  key={user?.id}>
-                    <Link to={`/users/${user.id}`}>
-                        <span >{user?.username}</span>
-                        <span >{user?.blogs?.length}</span>
-                    </Link>
-                    </li>
-                ))}
-                </ul> */}
                 <Table size="md">
                 <TableCaption>Users and number of blogs created by them</TableCaption>
                 <Thead>
@@ -42,7 +28,7 @@ const UsersPage = () => {
                 </Thead>
                 <Tbody>
                 {users?.map((user) => (
-                    <Tr  key={user?.id} color="gray.500" on>
+                    <Tr  key={user?.id} color="gray.500" _hover={{ color: 'blue.500', fontWeight: 'medium'}}>
                         <Td ><Link to={`/users/${user.id}`}>{user?.username}</Link></Td>
                         <Td >{user?.blogs?.length}</Td>
                     </Tr>

@@ -55,14 +55,11 @@ const LoginPage = () => {
 
     return (
         <>  				
-					{/* <Flex justify='center' align='center' w='100%' h='93vh'> */}
-            <VStack justify='center' align='center' w='100%' h='93vh' spacing="3" >
-              <Heading mb="10" size="lg">Log in to Application</Heading>
+            <VStack justify='center' align='center' w='100%' h='93vh' spacing="3" color="gray.600">
+            <Heading mb="6" size="lg">Log in to Application</Heading>
             <LoginForm handleLogin={handleLogin}/>
             <Notification w="350px"/>
             </VStack>
-          {/* </Flex> */}
-
         </>
     )
 }

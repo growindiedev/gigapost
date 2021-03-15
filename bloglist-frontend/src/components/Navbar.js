@@ -25,17 +25,17 @@ const Navbar = () => {
     if(user){
         return (
            
-            <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="2" >
+            <Flex bg="gray.300" align="center" px="20"  bg="gray.200" py="1.5" color="gray.600" 
+            >
                 <Box px="2">
-                    <NavLink to="/"><Image w='120px' src='/logo.png' alt='Logo' width="2rem"/></NavLink>
+                    <NavLink to="/"><Image w='140px' src='/gigapost.png' alt='Logo' /></NavLink>
                 
-                    {/* <Heading size="md">GigaPost</Heading> */}
                 </Box>
                 <Box px="2"> 
-                <Text size="sm" fontWeight="semibold" ><NavLink to="/blogs" >blogs</NavLink></Text>
+                <Text size="sm" fontWeight="semibold" _hover={{ color: 'orange.400' }}><NavLink to="/blogs" >Blogs</NavLink></Text>
                 </Box>
                 <Box px="2"> 
-                <Text size="sm" fontWeight="semibold"><NavLink to="/users">users</NavLink></Text>
+                <Text size="sm" fontWeight="semibold" _hover={{ color: 'orange.400' }}><NavLink to="/users">Users</NavLink></Text>
                 </Box>
                 <Spacer />
                 <Flex  alignItems="center">
@@ -48,13 +48,12 @@ const Navbar = () => {
         )
     } else {
         return (
-        <Flex bg="gray.300" align="center" px="20"  color="gray.600" py="1.5">
+        <Flex bg="gray.300" align="center" px="20"  bg="gray.200" py="1.5">
         <Box  px="2">
-        <NavLink to="/"><Image w='120px' src='/gigaLogo.png' alt='Logo' size="l"/></NavLink>
-            {/* <Heading size="md">GigaPost</Heading> */}
+        <NavLink to="/"><Image w='140px' src='/gigapost.png' alt='Logo' size="l"/></NavLink>
         </Box>
         <Spacer />
-        <ButtonGroup variant="outline" spacing="6" size="sm" colorScheme="teal" border="none" >
+        <ButtonGroup variant="outline" spacing="6" size="sm" colorScheme="telegram" border="none" color="gray.600">
             <Button onClick={handlesignup} borderRadius="sm">
             Sign Up
             </Button>

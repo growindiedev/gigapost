@@ -52,13 +52,11 @@ const RegisterPage = () => {
 
     return (
         <>
-					{/* <Flex justify='center' align='center' w='100%' h='93vh'> */}
-            <VStack justify='center' align='center' w='100%' h='93vh'>
-            <Heading mb="10" size="lg">Create a new account</Heading>
+            <VStack justify='center' align='center' w='100%' h='93vh' spacing="3" color="gray.600">
+            <Heading mb="5" size="lg" fontWeight="semibold">Create a new account</Heading>
             <RegisterForm handleRegister={handleRegister}/>
             <Notification w="350px"/>
             </VStack>
-          {/* </Flex> */}
         </>
     )
 }

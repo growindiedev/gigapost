@@ -42,7 +42,7 @@ const LoginForm = ({handleLogin}) => {
     <form onSubmit={formik.handleSubmit}>
 			<Stack spacing={3} bg="gray.200"
 			w='350px'
-			p={3}
+			p={5}
 			boxShadow='m'
 			rounded='lg'>
 				

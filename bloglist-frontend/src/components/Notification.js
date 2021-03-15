@@ -14,7 +14,7 @@ function Notification(props) {
     if (!message || (!message?.notification && !message?.error)) return null
 
     return (
-        <Alert status={message?.error ? 'error' : 'info'} {...props}>
+        <Alert status={message?.error ? 'error' : 'info'} {...props} variant="solid" padding="1.5" borderRadius="md">
         <AlertIcon />
         {message?.notification ? message?.notification : message?.error}      
         </Alert>

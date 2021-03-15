@@ -1,6 +1,17 @@
 import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import {VStack, Heading} from '@chakra-ui/react'
+import {
+    Table,
+    Thead,
+    Tbody,
+    Tr,
+    Th,
+    Td,
+    TableCaption,
+  } from "@chakra-ui/react"
+
 
 
 const User = () => {
@@ -13,21 +24,31 @@ const User = () => {
     }
 
     return (
-        <>
-            <h1>{user.name}</h1>
-            <h2>Added blogs</h2>
-            {user.blogs.length === 0 ? (
-                <p>No blogs added yet.</p>
-            ) : (
-                <ul>
-                {user.blogs?.map((blog) => (
-                    <li key={blog.id}>
+        <VStack w="xl"  padding="10" spacing="5" mx="auto">
+            <Heading size="lg">{user.name}</Heading>
+            
+
+                <Table size="sm" >
+                <TableCaption>{`These are the blogs added by ${user.name}`}</TableCaption>
+                <Thead>
+                    <Tr>
+                    <Th>Added blogs</Th>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                {user.blogs.length === 0 ? (
+                <Tr><Td>No blogs added yet.</Td></Tr>
+                ) : (
+                user.blogs?.map((blog) => (
+                    <Tr>
+                    <Td key={blog.id} fontSize="md" >
                     {blog.title}
-                    </li>
-            ))}
-                </ul>
-            )}
-        </>
+                    </Td>
+                    </Tr>
+                )))}
+                </Tbody>
+                </Table>
+        </VStack>
     )
 }
 

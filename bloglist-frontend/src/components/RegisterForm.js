@@ -82,7 +82,7 @@ const RegisterForm = ({handleRegister}) => {
     <form onSubmit={formik.handleSubmit}>
     <Stack spacing={3} bg="gray.200"
     w='350px'
-    p={3}
+    p={5}
     boxShadow='m'
     rounded='lg'>
       {/* <Image w='100px' src='./gigaLogo.png' alt='Logo' mx="auto"/> */}

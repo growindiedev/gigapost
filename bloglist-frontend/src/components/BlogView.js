@@ -70,26 +70,26 @@ const BlogView = () => {
   }
 
     return (
-        <VStack w="xl" p="10" mx="auto">
-           <Stack w="xl" borderWidth="1px" borderRadius="md" overflow="hidden" py="3" spacing="1" px="5">
-               <Heading size="md">{blog.title}</Heading>
-               <Text>{blog.author}</Text>
-               <Text>{blog.content}</Text>
-               <Text as="a" target="_" href={`https://${blog.url}`} _hover={{ fontColor: 'blue' }}>{blog.url}</Text>
-                <HStack spacing="2">
-                    <Text>{blog.likes}</Text>
+        <VStack w="xxl" p="10" mx="auto" color="gray.600">
+           <Stack w="xl" borderWidth="2px" borderRadius="md" overflow="hidden" py="5" px="6" spacing="2.5"  boxShadow="md" borderColor="gray.200" >
+               <Heading size="lg" >{blog.title}</Heading>
+               <Heading size="sm" color="gray.500">{blog.author}</Heading>
+               <Text textAlign="justify" >{blog.content}</Text>
+               <Text as="a" target="_" href={`https://${blog.url}`} _hover={{ color: 'blue.300' }} color="blue.500" fontSize="xl" fontWeight="medium">{blog.url}</Text>
+                <HStack spacing="2" color="orange.500" fontSize="sm">
+                    
+                    <Text>Added by  <Badge colorScheme="orange"> {`${blog.user?.name}`}</Badge></Text>
+                    
+                    <Text>&#8226;</Text>
+                    <Text fontWeight="medium" color="orange.400">{blog.likes}</Text>
                     <Icon 
-                    size="md"
-                    _hover={{ boxShadow: 'md' }}
+                    cursor="grab"
                     _active={{ boxShadow: 'lg' }}
-                    borderRadius="sm"
                     // width="20"
+                    size="md"
                     as={GrLike}
-                    role="Button"
                     onClick={addLike}
                     />
-                    <Text>&#8226;</Text>
-                    <Badge colorScheme="orange"> {`Added by ${blog.user?.name}`}</Badge>
                 </HStack>
                 {blog.user?.username === user?.username && (
                 <Button 
@@ -111,11 +111,11 @@ const BlogView = () => {
             {blog.comments && blog.comments.length !== 0 ? (
                 <ul>
                 {blog.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} p="1.5" variant="left-accent" w="lg" m="2.5" borderRadius="md" size="sm"/>
+                    <Comment key={comment.id} comment={comment} p="1.5" variant="left-accent" w="lg" m="2.5" borderRadius="md" size="sm" fontSize="sm"/>
                 ))}
                 </ul>
             ) : (
-                <Comment comment='Add the first comment for this blog' p="1.5" variant="left-accent" w="lg" m="2" borderRadius="md"/>
+                <Comment comment='Add the first comment for this blog' p="1.4" variant="solid" w="lg" m="2" borderRadius="md"/>
             )}
         </VStack>
     )
