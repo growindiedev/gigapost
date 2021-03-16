@@ -4,8 +4,6 @@ import { useSelector} from 'react-redux'
 import {
   Alert,
   AlertIcon,
-  AlertTitle,
-  AlertDescription,
 } from "@chakra-ui/react"
 
 function Notification(props) {

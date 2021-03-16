@@ -14,9 +14,8 @@ import {
 	Button,
 	FormControl,
 	Center,
-	Heading,
-	Image,
-	FormHelperText
+	Text,
+	
 } from '@chakra-ui/react';
 
 const LoginForm = ({handleLogin}) => {
@@ -55,7 +54,7 @@ const LoginForm = ({handleLogin}) => {
 						<Input 
 							type='text' name='username' 
 							placeholder='username' 
-							area-lable='username' 
+							area-label='username' 
 							onChange={formik.handleChange} 
 							value={formik.values.username}
 							bg='white'
@@ -68,7 +67,7 @@ const LoginForm = ({handleLogin}) => {
 						<Input
 							type='password'
 							placeholder='Password'
-							aria-lable='Password'
+							aria-label='Password'
               				name='password'
 							onChange={formik.handleChange}
 							value={formik.values.password}
@@ -85,7 +84,7 @@ const LoginForm = ({handleLogin}) => {
 					>
 					Login
 				</Button>
-				{/* <FormControl ><FormHelperText textAlign="center">Created by Jarryingnut 👨‍💻</FormHelperText></FormControl> */}
+				<Text fontSize="sm" textAlign="center" color="gray.400">Created by Jarryingnut 👨‍💻</Text>
 				
 				
 			</Stack>

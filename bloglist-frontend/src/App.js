@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import blogService from './services/blogs'
 import { initializeBlogs } from './reducers/blogReducer'
 import LoginPage from './components/LoginPage'
@@ -11,7 +11,6 @@ import BlogView from './components/BlogView'
 import RegisterPage from './components/RegisterPage'
 import { initializeUsers } from './reducers/userReducer'
 import Navbar from './components/Navbar'
-import { ChakraProvider } from "@chakra-ui/react"
 
 
 const App = () => {

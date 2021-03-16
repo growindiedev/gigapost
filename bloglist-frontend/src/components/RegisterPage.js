@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
 import { registerUser } from '../reducers/loginReducer'
 import { useHistory } from 'react-router-dom'
-import {Flex, VStack, Heading} from '@chakra-ui/react'
+import {VStack, Heading} from '@chakra-ui/react'
 
 
 const RegisterPage = () => {

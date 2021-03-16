@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../reducers/loginReducer'
 import { NavLink, useHistory } from 'react-router-dom'
-import {Flex, Box, Spacer, Button, Heading, Text, Image, ButtonGroup} from '@chakra-ui/react'
+import {Flex, Box, Spacer, Button, Text, Image, ButtonGroup} from '@chakra-ui/react'
 
 const Navbar = () => {
     const user = useSelector(state => state.login) 
@@ -25,7 +25,7 @@ const Navbar = () => {
     if(user){
         return (
            
-            <Flex bg="gray.300" align="center" px="20"  bg="gray.200" py="1.5" color="gray.600" 
+            <Flex  align="center" px="40"  bg="gray.200" py="1.5" color="gray.600" 
             >
                 <Box px="2">
                     <NavLink to="/"><Image w='140px' src='/gigapost.png' alt='Logo' /></NavLink>
@@ -48,7 +48,7 @@ const Navbar = () => {
         )
     } else {
         return (
-        <Flex bg="gray.300" align="center" px="20"  bg="gray.200" py="1.5">
+        <Flex align="center" px="20"  bg="gray.200" py="1.5">
         <Box  px="2">
         <NavLink to="/"><Image w='140px' src='/gigapost.png' alt='Logo' size="l"/></NavLink>
         </Box>

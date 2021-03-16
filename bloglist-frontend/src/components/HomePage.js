@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import Blog from './Blog'
-import {VStack, Heading, Box, HStack, Center, Stack} from '@chakra-ui/react';
+import {VStack, Heading, Stack} from '@chakra-ui/react';
 import UseAnimations from "react-useanimations";
 import satisfied from 'react-useanimations/lib/loading2'
 

@@ -7,7 +7,7 @@ import { setNotification } from '../reducers/notificationReducer'
 import CommentForm from './CommentForm'
 import { GrLike } from 'react-icons/gr'
 import { BsFillChatSquareQuoteFill } from 'react-icons/bs'
-import {VStack, Box, Button, Icon, Heading, Text, HStack, Stack, Badge} from '@chakra-ui/react'
+import {VStack, Button, Icon, Heading, Text, HStack, Stack, Badge} from '@chakra-ui/react'
 
 
 const BlogView = () => {

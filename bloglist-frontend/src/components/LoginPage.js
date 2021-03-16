@@ -1,19 +1,17 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 import Notification from './Notification'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setNotification } from '../reducers/notificationReducer'
 import { login } from '../reducers/loginReducer'
 import { useHistory } from 'react-router-dom'
-import {Flex, useToast, VStack, Heading} from '@chakra-ui/react'
+import {VStack, Heading} from '@chakra-ui/react'
 
 
 const LoginPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const toast = useToast()
 
-    const message = useSelector(state => state.notification)
     const handleLogin = async (username, password) => {
         if (!username || username === '' || !password || password === '') {
           console.log('something went wrong')

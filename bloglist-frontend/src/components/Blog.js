@@ -9,7 +9,7 @@ const Blog = ({blog, ...rest}) => {
       <Link to={`/blogs/${blog.id}`}>
       <Heading fontSize="l" fontWeight="medium">{blog.title}</Heading>        
       <Box>
-          <Text mt={2} fontSize="sm" color="gray.500">{`Author: ${blog.author}`}</Text>
+          <Text mt={1.5} fontSize="sm" color="gray.500">{`Author: ${blog.author}`}</Text>
       </Box>
       </Link>
     </Box>

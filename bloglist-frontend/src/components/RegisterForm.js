@@ -16,8 +16,7 @@ import {
 	InputLeftElement,
 	Button,
 	FormControl,
-	FormHelperText,
-	Image,
+	Text,
   Center
 } from '@chakra-ui/react';
 
@@ -48,35 +47,7 @@ const RegisterForm = ({handleRegister}) => {
     },
   });
 
-  // return (
-  //   <form onSubmit={formik.handleSubmit}>
-  //     <input
-  //       placeholder="username"
-  //       type="text"
-  //       name="username"
-  //       onChange={formik.handleChange}
-  //       value={formik.values.username}
-  //     />
-  //     <input 
-  //       placeholder="password"
-  //       type="text"
-  //       name="password"
-  //       onChange={formik.handleChange}
-  //       value={formik.values.password}
-  //     />
-  //     <input 
-  //       placeholder="name"
-  //       type="text"
-  //       name="name"
-  //       onChange={formik.handleChange}
-  //       value={formik.values.name}
-  //     />
-      
-  //     <button type="submit">
-  //       Sign Up
-  //     </button>
-  //   </form>
-  // )
+
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -85,7 +56,6 @@ const RegisterForm = ({handleRegister}) => {
     p={5}
     boxShadow='m'
     rounded='lg'>
-      {/* <Image w='100px' src='./gigaLogo.png' alt='Logo' mx="auto"/> */}
       <Center>
 				<UseAnimations animation={satisfied}  size={50}  strokeColor="gray"/>
 				</Center>
@@ -95,7 +65,7 @@ const RegisterForm = ({handleRegister}) => {
           <Input 
             type='text' name='name' 
             placeholder='Name' 
-            area-lable='name' 
+            area-label='name' 
             onChange={formik.handleChange} 
             value={formik.values.name}
             bg='white'
@@ -108,7 +78,7 @@ const RegisterForm = ({handleRegister}) => {
           <Input 
             type='text' name='username' 
             placeholder='username' 
-            area-lable='username' 
+            area-label='username' 
             onChange={formik.handleChange} 
             value={formik.values.username}
             bg='white'
@@ -121,7 +91,7 @@ const RegisterForm = ({handleRegister}) => {
           <Input
             type='password'
             placeholder='Password'
-            aria-lable='Password'
+            aria-label='Password'
             name='password'
             onChange={formik.handleChange}
             value={formik.values.password}
@@ -136,7 +106,7 @@ const RegisterForm = ({handleRegister}) => {
 							type='password'
 							name='confirmPassword'
 							placeholder='confirm password'
-							aria-lable='confirmPassword'
+							aria-label='confirmPassword'
               onChange={formik.handleChange} 
               value={formik.values.confirmPassword}
 							bg='white'
@@ -152,7 +122,8 @@ const RegisterForm = ({handleRegister}) => {
         >
         Sign up
       </Button>
-      
+      <Text fontSize="sm" textAlign="center" color="gray.400">Created by Jarryingnut 👨‍💻</Text>
+
       
       
     </Stack>
